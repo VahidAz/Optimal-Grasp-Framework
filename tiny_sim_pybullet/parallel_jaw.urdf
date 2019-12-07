@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<robot name="parallel_jaw">
+
+  <link name="gripper_base">
+    <inertial>
+      <mass value="0.28" />
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <geometry>
+          <mesh filename="electric_gripper_w_fingers.STL" scale="1 1 1" />
+      </geometry>
+      <material name="darkred">
+        <texture />
+        <color rgba="0.5 0.1 0.1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="electric_gripper_w_fingers.STL" scale="1 1 1" />
+      </geometry>
+      <material name="darkred">
+        <texture />
+        <color rgba="0.5 0.1 0.1 1" />
+      </material>
+    </collision>
+  </link>
+
+  <link name="end_effector">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+  <link name="gripper">
+    <gravity>0</gravity>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
+      <mass value="0.0001"/>
+      <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+    </inertial>
+  </link>
+
+  <joint name="endpoint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0 0.025"/>
+    <parent link="gripper_base"/>
+    <child link="gripper"/>
+  </joint>
+
+  <joint name="end_effector" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0 0.04"/>
+    <axis xyz="0 0 0"/>
+    <parent link="gripper"/>
+    <child link="end_effector"/>
+  </joint>
+<!--
+  <link name="virtual_body">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="0.025 0.062 0.007"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="0.025 0.062 0.007"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_head_sponge" type="fixed">
+    <origin rpy="0 0 0" xyz="0.08 0 -0.00"/>
+    <axis xyz="0 0 0"/>
+    <parent link="gripper_base"/>
+    <child link="virtual_body"/>
+  </joint>
+-->
+</robot>

@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<robot name="parallel_jaw">
+
+  <link name="gripper_base">
+    <inertial>
+      <mass value="0.28" />
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <geometry>
+          <mesh filename="electric_gripper_w_fingers.STL" scale="1 1 1" />
+      </geometry>
+      <material name="darkred">
+        <texture />
+        <color rgba="0.5 0.1 0.1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0014 0 0.024" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="electric_gripper_w_fingers.STL" scale="1 1 1" />
+      </geometry>
+      <material name="darkred">
+        <texture />
+        <color rgba="0.5 0.1 0.1 1" />
+      </material>
+    </collision>
+  </link>
+
+</robot>
