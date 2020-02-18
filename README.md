@@ -1,3 +1,3 @@
 # Optimal-Grasp-Framework
 
-Framework for generating optimal graps for grasps dataset or training.
+Optimal grasps generator framework to make graps dataset for training.
